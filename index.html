@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Fighter Game</title>
     <style>
       * {
         box-sizing: border-box;
@@ -29,7 +29,7 @@
         <div
           style="
             position: relative;
-            height: 20px;
+            height: 22px;
             width: 100%;
             display: flex;
             justify-content: flex-end;
@@ -37,23 +37,23 @@
         >
           <div
             style="
-              background-color: rgba(214, 1, 1, 0.48);
+              background-color: rgba(171, 21, 21, 0.48);
               height: 20px;
               width: 100%;
-              border-radius: 8px;
+              border-radius: 10px;
             "
           ></div>
           <div
             id="playerHealth"
             style="
               position: absolute;
-              background-color: blue;
+              background-color: rgb(42, 158, 252);
               top: 0;
               right: 0;
               /* left: 0; */
               bottom: 0;
               width: 100%;
-              border-radius: 8px;
+              border-radius: 10px;
             "
           ></div>
         </div>
@@ -70,10 +70,9 @@
             flex-shrink: 0;
             margin: 4px;
             font-size: 42px;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
-              sans-serif;
+            font-family: cursive;
             font-weight: 900;
-            color: aliceblue;
+            color: rgb(255, 251, 32);
             border-radius: 25%;
           "
         >
@@ -84,21 +83,21 @@
         <div style="position: relative; height: 20px; width: 100%">
           <div
             style="
-              background-color: rgba(214, 1, 1, 0.48);
+              background-color: rgba(255, 47, 47, 0.48);
               height: 20px;
-              border-radius: 8px;
+              border-radius: 10px;
             "
           ></div>
           <div
             id="enemyHealth"
             style="
               position: absolute;
-              background-color: blue;
+              background-color: orangered;
               top: 0;
               right: 0;
               left: 0;
               bottom: 0;
-              border-radius: 8px;
+              border-radius: 10px;
             "
           ></div>
         </div>
@@ -107,13 +106,12 @@
         id="resultOfGame"
         style="
           position: absolute;
-          color: aliceblue;
+          color: orangered;
           margin: 4px;
           font-size: 42px;
-          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
-            sans-serif;
+          font-family: cursive;
           font-weight: 900;
-          color: aliceblue;
+          color: orangered;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -129,10 +127,12 @@
       <canvas></canvas>
     </div>
     <div>
-      NOTE: How To Play ? <br />Player 1 : can use (q , space , e ,r ) to fight
+      NOTE:Learn How To Play ? <br />Player 1 : can use (q , space , e ,r ) to fight
       && (w , a,d) to move and jump <br />Player 2 : can use (arrow-down ,
       <b> , </b> , . , / ) && (arrow-right , arrow-left, arrow-up ) to move and
       jump
+      <br>
+      Best of luck 😊
     </div>
     <script src="./js/utls.js"></script>
     <script src="./js/classes.js "></script>
