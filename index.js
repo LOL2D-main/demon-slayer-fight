@@ -1,10 +1,15 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
-
+const fullscreenBtn = document.getElementById("fullscreenBtn");
+fullscreenBtn.addEventListener("click", () => {
+  canvas.requestFullscreen();
+});
 canvas.width = 1024;
 canvas.height = 576;
 
 const gravity = 0.7;
+
+isPaused=0;
 
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -29,6 +34,9 @@ const keys = {
   },
   arrowUp: {
     pressed: false,
+  },
+  puase:{
+    pressed:false,
   },
 };
 
@@ -240,18 +248,37 @@ const enmy = new Fighter({
 
 decreaseTimer();
 
+function showPauseText() {
+  if (isPaused) {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.5)"; // Optional: Dim background for effect
+    ctx.fillRect(0, 0, canvas.width, canvas.height); // Cover entire canvas
+
+    ctx.fillStyle = "white"; // Text color
+    ctx.font = "48px Arial"; // Font size and style
+    ctx.textAlign = "center"; // Center the text
+    ctx.fillText("Game Paused", canvas.width / 2, canvas.height / 2); // Draw text
+  }
+}
+
 function animate() {
   window.requestAnimationFrame(animate);
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   backGround.update();
-  bird.update();
-
+ 
   player1.update();
   enmy.update();
 
   player1.velocity.x = 0;
   enmy.velocity.x = 0;
+  if(isPaused){
+    bird.puase();
+    player1.puase();
+    enmy.puase();
+    showPauseText();
+    return;
+  }
+  bird.update();
 
   if (player1.possition.x < -100) {
     player1.possition.x = 960;
@@ -354,12 +381,32 @@ function animate() {
       enmy: enmy,
       timerId,
     });
+
+
   }
 }
 
 animate();
 
+
+
 window.addEventListener("keydown", (e) => {
+
+  if (e.key === "p") {
+
+    if(!isPaused){
+      pauseTimer();
+      showPauseText();
+      console.log("pause!")
+    }
+    else{
+      resumeTimer();
+    }
+    isPaused = !isPaused; 
+  }
+  if (isPaused){
+    return;
+  } 
   if (!player1.dead) {
     switch (e.key) {
       case "d":
@@ -458,5 +505,11 @@ window.addEventListener("keyup", (e) => {
       keys.ArrowLeft.pressed = false;
       break;
   }
-  // console.log(e.key);
+  switch(e.key){
+    case "p":
+      keys.puase.pressed=true;
+      console.log("Escape key pressed");
+      break;
+  }
+   
 });
