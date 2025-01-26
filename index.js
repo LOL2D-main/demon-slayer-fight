@@ -460,3 +460,8 @@ window.addEventListener("keyup", (e) => {
   }
   // console.log(e.key);
 });
+// full screen enhancement by Esmail Khaleel
+document.querySelector('#fullscreen-btn').addEventListener('click', ()=>{
+  if(!document.fullscreenElement){document.querySelector('body>div').requestFullscreen().then(()=>{canvas.style.width = '100%';})}
+  else document.exitFullscreen();
+});
