@@ -3,6 +3,7 @@ const ctx = canvas.getContext("2d");
 
 canvas.width = 1024;
 canvas.height = 576;
+let timeoutId = null;
 
 const gravity = 0.7;
 
@@ -239,7 +240,6 @@ const enmy = new Fighter({
 });
 
 decreaseTimer();
-
 function animate() {
   window.requestAnimationFrame(animate);
   ctx.fillStyle = "black";
@@ -354,6 +354,19 @@ function animate() {
       enmy: enmy,
       timerId,
     });
+    if (player1.dead && !timeoutId) {
+      timeoutId = setTimeout(() => {
+        alert("Player 2 won !");
+        window.location.reload();
+      }, 2000);
+    }
+
+    if (enmy.dead && !timeoutId) {
+      timeoutId = setTimeout(() => {
+        alert("Player 1 won !");
+        window.location.reload();
+      }, 2000);
+    }
   }
 }
 
