@@ -1,141 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      * {
-        box-sizing: border-box;
-      }
-    </style>
-  </head>
 
-  <body>
-    <!-- big Container -->
-    <div style="position: relative; display: inline-block">
-      <!-- small Container -->
-      <div
-        style="
-          position: absolute;
-          display: flex;
-          width: 100%;
-          align-items: center;
-          padding: 20px;
-        "
-      >
-        <!-- playerHealth -->
-        <div
-          style="
-            position: relative;
-            height: 20px;
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-          "
-        >
-          <div
-            style="
-              background-color: rgba(214, 1, 1, 0.48);
-              height: 20px;
-              width: 100%;
-              border-radius: 8px;
-            "
-          ></div>
-          <div
-            id="playerHealth"
-            style="
-              position: absolute;
-              background-color: blue;
-              top: 0;
-              right: 0;
-              /* left: 0; */
-              bottom: 0;
-              width: 100%;
-              border-radius: 8px;
-            "
-          ></div>
-        </div>
-        <!-- Timer -->
-        <div
-          id="timer"
-          style="
-            background-color: rgba(23, 126, 90, 0.48);
-            width: 100px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            margin: 4px;
-            font-size: 42px;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
-              sans-serif;
-            font-weight: 900;
-            color: aliceblue;
-            border-radius: 25%;
-          "
-        >
-          100
-        </div>
-        <!-- Enemy Health -->
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demon Slayer Fighting Game</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        <div style="position: relative; height: 20px; width: 100%">
-          <div
-            style="
-              background-color: rgba(214, 1, 1, 0.48);
-              height: 20px;
-              border-radius: 8px;
-            "
-          ></div>
-          <div
-            id="enemyHealth"
-            style="
-              position: absolute;
-              background-color: blue;
-              top: 0;
-              right: 0;
-              left: 0;
-              bottom: 0;
-              border-radius: 8px;
-            "
-          ></div>
-        </div>
+    body {
+      background-color: #1a1a1a;
+      color: #ffffff;
+      font-family: 'Press Start 2P', cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .game-container {
+      position: relative;
+      display: inline-block;
+      margin: 20px 0;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .health-container {
+      position: absolute;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      padding: 20px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+    }
+
+    .health-bar {
+      position: relative;
+      height: 30px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      background-color: rgba(255, 0, 0, 0.3);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #playerHealth,
+    #enemyHealth {
+      position: absolute;
+      background: linear-gradient(to right, #4a90e2, #357abd);
+      height: 100%;
+      width: 100%;
+      border-radius: 15px;
+      transition: width 0.3s ease-in-out;
+    }
+
+    #playerHealth {
+      right: 0;
+    }
+
+    #enemyHealth {
+      left: 0;
+    }
+
+    #timer {
+      background-color: rgba(0, 0, 0, 0.8);
+      width: 100px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin: 0 20px;
+      font-size: 32px;
+      color: #ffffff;
+      border-radius: 15px;
+      border: 2px solid #4a90e2;
+      box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+    }
+
+    #resultOfGame {
+      position: absolute;
+      color: #ffffff;
+      font-size: 48px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      text-shadow: 0 0 10px rgba(74, 144, 226, 0.8);
+    }
+
+    .instructions {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 15px;
+      margin-top: 20px;
+      max-width: 800px;
+      line-height: 1.6;
+      font-size: 14px;
+      border: 2px solid #4a90e2;
+      box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+    }
+
+    .instructions h2 {
+      color: #4a90e2;
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+
+    .instructions p {
+      margin-bottom: 10px;
+    }
+
+    .key {
+      background-color: #4a90e2;
+      padding: 2px 8px;
+      border-radius: 5px;
+      margin: 0 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="game-container">
+    <div class="health-container">
+      <div class="health-bar">
+        <div id="playerHealth"></div>
       </div>
-      <div
-        id="resultOfGame"
-        style="
-          position: absolute;
-          color: aliceblue;
-          margin: 4px;
-          font-size: 42px;
-          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
-            sans-serif;
-          font-weight: 900;
-          color: aliceblue;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          display: none;
-        "
-      >
-        Tie
+      <div id="timer">100</div>
+      <div class="health-bar">
+        <div id="enemyHealth"></div>
       </div>
-      <canvas></canvas>
     </div>
-    <div>
-      NOTE: How To Play ? <br />Player 1 : can use (q , space , e ,r ) to fight
-      && (w , a,d) to move and jump <br />Player 2 : can use (arrow-down ,
-      <b> , </b> , . , / ) && (arrow-right , arrow-left, arrow-up ) to move and
-      jump
-    </div>
-    <script src="./js/utls.js"></script>
-    <script src="./js/classes.js "></script>
-    <script src="./index.js"></script>
-  </body>
+    <div id="resultOfGame">Tie</div>
+    <canvas></canvas>
+  </div>
+  <div class="instructions">
+    <h2>How To Play</h2>
+    <p><strong>Player 1:</strong></p>
+    <p>Movement: <span class="key">W</span> (jump), <span class="key">A</span> (left), <span class="key">D</span>
+      (right)</p>
+    <p>Attacks: <span class="key">Q</span>, <span class="key">SPACE</span>, <span class="key">E</span>, <span
+        class="key">R</span></p>
+    <p><strong>Player 2:</strong></p>
+    <p>Movement: <span class="key">↑</span> (jump), <span class="key">←</span> (left), <span class="key">→</span>
+      (right)</p>
+    <p>Attacks: <span class="key">↓</span>, <span class="key">,</span>, <span class="key">.</span>, <span
+        class="key">/</span></p>
+  </div>
+  <script src="./js/utls.js"></script>
+  <script src="./js/classes.js"></script>
+  <script src="index.js"></script>
+</body>
+
 </html>
