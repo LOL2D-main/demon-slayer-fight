@@ -37,16 +37,17 @@ const backGround = new Sprite({
     x: 0,
     y: 0,
   },
-  imgSrc: "./imgs/bg.png",
+  imgSrc: "./imgs/360_F_957485798_hAZzWIBnbkkgMCxHmEtm8slcVt3eg8Dd.jpg",
+  scale: 1.8
 });
 
 const bird = new Sprite({
   possition: {
-    x: 50,
+    x: 100,
     y: 100,
   },
   imgSrc: "./imgs/bird.png",
-  scale: 0.2,
+  scale: 0.8,
   framesMax: 6,
 });
 
