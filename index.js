@@ -37,7 +37,7 @@ const backGround = new Sprite({
     x: 0,
     y: 0,
   },
-  imgSrc: "./imgs/bg.png",
+  imgSrc: "./imgs/bg_2.png",
 });
 
 const bird = new Sprite({
