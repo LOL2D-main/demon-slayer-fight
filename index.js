@@ -27,7 +27,7 @@ const keys = {
   ArrowRight: {
     pressed: false,
   },
-  arrowUp: {
+  rrowUp: {
     pressed: false,
   },
 };
@@ -37,7 +37,9 @@ const backGround = new Sprite({
     x: 0,
     y: 0,
   },
-  imgSrc: "./imgs/bg.png",
+  // !my changes
+  imgSrc: "./imgs/bg.jpg",
+  scale: 0.2,
 });
 
 const bird = new Sprite({
@@ -242,6 +244,8 @@ decreaseTimer();
 
 function animate() {
   window.requestAnimationFrame(animate);
+
+
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   backGround.update();
