@@ -48,6 +48,7 @@ const bird = new Sprite({
   imgSrc: "./imgs/bird.png",
   scale: 0.2,
   framesMax: 6,
+  offset:{x:0,y:0}
 });
 
 const player1 = new Fighter({
@@ -149,7 +150,7 @@ const enmy = new Fighter({
   velocity: { x: 0, y: 10 },
   color: "blue",
   offset: {
-    x: -50,
+    x: 0,
     y: 40,
   },
   imgSrc: "./imgs/inoski/Idel.png",
