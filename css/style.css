@@ -1,0 +1,17 @@
+body
+{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: cadetblue;
+}
+.game-container
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.text
+{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+}
