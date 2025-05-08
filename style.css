@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.game-container {
+    position: relative;
+    display: inline-block;
+}
+
+.overlay-container {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 20px;
+}
+
+.health-bar {
+    position: relative;
+    height: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 4px;
+}
+
+.health-background {
+    background-color: rgba(214, 1, 1, 0.48);
+    height: 20px;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.health-fill {
+    position: absolute;
+    background-color: blue;
+    top: 0;
+    bottom: 0;
+    border-radius: 8px;
+}
+
+#playerHealth {
+    right: 0;
+    width: 100%;
+}
+
+#enemyHealth {
+    left: 0;
+    right: 0;
+}
+
+#timer {
+    background-color: rgba(23, 126, 90, 0.48);
+    width: 100px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin: 4px;
+    font-size: 42px;
+    font-weight: 900;
+    color: aliceblue;
+    border-radius: 25%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#resultOfGame {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    font-weight: 900;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: aliceblue;
+}
+
+.instructions {
+    margin-top: 20px;
+}
